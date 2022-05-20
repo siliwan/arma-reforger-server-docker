@@ -13,6 +13,9 @@ RUN mkdir /home/container/profile
 COPY --chown=container:container "entrypoint.sh" "/entrypoint.sh"
 RUN chmod +x "/entrypoint.sh"
 
+USER container
+ENV USER=container HOME=/home/container
+
 WORKDIR /home/container
 
 EXPOSE ${SERVER_PORT}
