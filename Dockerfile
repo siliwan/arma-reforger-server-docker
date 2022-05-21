@@ -1,6 +1,7 @@
 FROM steamcmd/steamcmd:ubuntu-20
 
 ENV SERVER_PORT=2001/udp
+ENV STEAM_QUERY_PORT=17777/udp
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y libcurl4 libssl1.1
@@ -19,6 +20,7 @@ ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
 EXPOSE ${SERVER_PORT}
+EXPOSE ${STEAM_QUERY_PORT}
 
 ENTRYPOINT [ "/entrypoint.sh" ]
 
